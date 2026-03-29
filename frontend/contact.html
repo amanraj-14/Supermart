@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - SuperMart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">SuperMart</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="contact-page">
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>We’d love to hear from you. Reach out anytime!</p>
+
+            <div class="info-box">📧 amanr835222@gmail.com</div>
+            <div class="info-box">📞 +91 9334558857</div>
+            <div class="info-box">📍 Greater Noida, India</div>
+        </div>
+
+        <div class="contact-form-box">
+            <!-- ✅ form updated -->
+            <form onsubmit="sendMessage(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- ✅ EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("rKJHpMlcN94FZrH5j"); // 👈 replace
+})();
+
+function sendMessage(event) {
+    event.preventDefault(); // ❗ page reload stop karega
+
+    const params = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    emailjs.send("service_mye59xa", "template_ohq4yfs", params)
+    .then(function(response) {
+        alert("Message sent successfully ✅");
+    }, function(error) {
+        alert("Failed to send ❌");
+    });
+}
+</script>
+
+</body>
+</html>
